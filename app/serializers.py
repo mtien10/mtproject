@@ -18,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
         }
 
     def get_fields(self, *args, **kwargs):
-        fields = super().get_fields()(*args, **kwargs)
+        fields = super().get_fields(*args, **kwargs)
         return fields
 
 
@@ -29,7 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
         extra_kwargs = {
             "category": {
-                "error_message": {
+                "error_messages": {
                     'null': 'Trường này không được bỏ trống  '
                 }
             },
@@ -39,7 +39,7 @@ class ProductSerializer(serializers.ModelSerializer):
                 ]
             },
             "price": {
-                "error_message": {
+                "error_messages": {
                     'invalid': 'Giá sản phẩm không hợp lệ.'
                 }
             },
