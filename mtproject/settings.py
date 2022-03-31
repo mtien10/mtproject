@@ -81,11 +81,14 @@ WSGI_APPLICATION = 'mtproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ecoursesdb',
+        'USER': 'root',
+        'PASSWORD': 'manhtien123',
+        'HOST': '',   # Or an IP Address that your DB is hosted on
     }
 }
-
+AUTH_USER_MODEL = 'app.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
