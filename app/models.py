@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from ckeditor.fields import RichTextField
 
 
 class User(AbstractUser):
@@ -16,7 +17,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name="Nhóm sản phẩm", on_delete=models.PROTECT)
     code = models.CharField(max_length=30, unique=True, verbose_name="Mã")
-    name = models.CharField(max_length=200, verbose_name="Tên")
+    name = RichTextField(max_length=200, verbose_name="Tên")
     price = models.IntegerField(verbose_name="Đơn giá")
     image = models.ImageField(blank=True, upload_to="static/images", verbose_name="Ảnh")
 
