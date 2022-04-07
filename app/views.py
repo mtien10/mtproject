@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view, action
 from .constans import PAGE_SIZE
 from rest_framework.views import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -83,11 +84,11 @@ def search_product(request):
 
 
 @api_view(['POST'])
-def order_product(request, id):
+def order_product(request, pk):
     serializer = OrderSerializer(data=request.data)
 
     if serializer.is_valid():
-        product = Product.objects.get(id=id)
+        product = Product.objects.get(pk=pk)
         data = request.data
         order = Order()
 
@@ -111,6 +112,7 @@ def order_product(request, id):
 def confirm_order(request, pk):
     order = Order.objects.get(pk=pk)
     order.status = Order.Status.DELIVERED
+    order.deliverDate = datetime.now()
     order.save()
     return Response({'success': True})
 
@@ -124,6 +126,3 @@ def cancel_order(request, pk):
     return Response({'success': True})
 
 
-@api_view(['GET'])
-def hello(request):
-    return Response({'message': 'Chao mung on web '})

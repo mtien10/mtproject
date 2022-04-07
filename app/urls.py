@@ -3,9 +3,10 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
-    path('hello', hello),
     path('search-product', search_product),
-    path('order-product/<id>', order_product)
+    path('order-product/<pk>', order_product),
+    path('confirm_order/<pk>', confirm_order),
+    path('cancel_order/<pk>', cancel_order)
 ]
 
 # Category
