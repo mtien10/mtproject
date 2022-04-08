@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'app',
+    'users',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,7 +88,7 @@ DATABASES = {
         'HOST': '',  # Or an IP Address that your DB is hosted on
     }
 }
-AUTH_USER_MODEL = 'app.User'
+AUTH_USER_MODEL = 'users.UserModel'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
