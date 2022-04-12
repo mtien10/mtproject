@@ -124,5 +124,3 @@ def cancel_order(request, pk):
     order.status = Order.Status.CANCELLED
     order.save()
     return Response({'success': True})
-
-
