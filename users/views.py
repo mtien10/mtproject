@@ -15,7 +15,8 @@ class CustomUserCreate(APIView):
             new_user = reg_serializer.save()
             if new_user:
                 return Response(status=status.HTTP_201_CREATED)
-        return Response(reg_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"Message": "Đăng ký Users thành công"}, reg_serializer.errors,
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
 class BlacklistTokenView(APIView):
@@ -26,5 +27,6 @@ class BlacklistTokenView(APIView):
             refresh_token = request.data['refresh_token']
             token = RefreshToken(refresh_token)
             token.blacklist()
+            return Response(status=status.HTTP_200_OK)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)

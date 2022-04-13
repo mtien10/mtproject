@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('api/', include('app.urls')),
+    path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
